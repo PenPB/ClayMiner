@@ -1,0 +1,23 @@
+package Resources;
+
+import org.powerbot.game.api.methods.Walking;
+import org.powerbot.game.api.methods.interactive.Players;
+
+public class Methods {
+  
+	public static boolean atMine(){
+		return (Variables.MINE).contains(Players.getLocal().getLocation());
+	}
+		
+	public static boolean atBank(){
+		return (Variables.BANK).contains(Players.getLocal().getLocation());
+		}
+	
+	public static void run(){
+		if (Walking.getEnergy() >= 10) {
+			if (!(Walking.isRunEnabled())) {
+				Walking.setRun(true);
+			}
+		}
+	}
+}

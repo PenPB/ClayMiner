@@ -1,0 +1,24 @@
+package Nodes;
+
+import org.powerbot.core.script.job.state.Node;
+import org.powerbot.game.api.methods.Game;
+import org.powerbot.game.api.methods.Walking;
+import org.powerbot.game.api.methods.tab.Inventory;
+
+import Resources.Methods;
+import Resources.Variables;
+
+public class MineWalking extends Node{
+
+  @Override
+	public boolean activate() {
+		return Game.isLoggedIn() && !Inventory.isFull();
+	}
+
+	@Override
+	public void execute() {
+		Methods.run();
+		Walking.newTilePath(Variables.CLAYWALK).traverse();
+	}
+
+}

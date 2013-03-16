@@ -21,7 +21,7 @@ import Nodes.MineWalking;
 import Nodes.Mining;
 
 
-@Manifest(authors = { "Pen" }, description = "Mines clay in Varrock", name = "PenClay")
+@Manifest(authors = { "Pen" }, description = "Mines clay in West Varrock, Have pickaxe in Inventory! DO NOT WIELD!", name = "PenClay")
 public class PenClay extends ActiveScript implements PaintListener {
 
 private long startClock;
@@ -30,7 +30,7 @@ private List<Node> jobs = new ArrayList<Node>();
 
 @Override
 public int loop() {
-  if(container != null){
+	if(container != null){
 	final Node job = container.state();
 	if(job != null){
 		container.set(job);

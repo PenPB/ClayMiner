@@ -5,7 +5,6 @@ import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
-import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 
 import Resources.Methods;
@@ -22,23 +21,14 @@ public class Mining extends Node{
 
 	@Override
 	public void execute() {
-		final SceneObject clay = SceneEntities.getNearest(Variables.rocks);
-		if (Players.getLocal().getAnimation() != 625) {
-				clay.interact("Mine");
-				Task.sleep(1000, 1200);
-				while(clay.validate()){
-					Task.sleep(500, 1000);
-			}
-		}
-		else{
-			Camera.turnTo(clay);
-			if(clay !=null){
-				clay.interact("Mine");
-				Task.sleep(1000, 1200);
-				while(clay.validate()){
-					Task.sleep(500, 1000);
-			}
+		 final SceneObject clay = SceneEntities.getNearest(Variables.rocks);
+	        if (clay != null)
+	          {
+	        if (clay.isOnScreen() && Players.getLocal().getAnimation() != 625);
+	               {
+	                clay.interact("Mine");
+	                Task.sleep(3000, 3800);
+	             }
+	         }
 		}
 	}
-}
-}

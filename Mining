@@ -29,12 +29,5 @@ public class Mining extends Node{
 					Task.sleep(500, 1000);
 				}
 			}
-		if (Players.getLocal().getAnimation() != 625) {
-			clay.interact("Mine");
-			Task.sleep(1000, 1200);
-			while(clay.validate()){
-				Task.sleep(500, 1000);
 		}
 	}
-	}
-}

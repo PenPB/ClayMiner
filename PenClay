@@ -1,0 +1,79 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+
+import org.powerbot.core.event.listeners.PaintListener;
+import org.powerbot.core.script.ActiveScript;
+import org.powerbot.core.script.job.state.Node;
+import org.powerbot.core.script.job.state.Tree;
+import org.powerbot.game.api.Manifest;
+import org.powerbot.game.api.util.Random;
+
+import Nodes.BankWalking;
+import Nodes.Banking;
+import Nodes.MineWalking;
+import Nodes.Mining;
+
+
+@Manifest(authors = { "Pen" }, description = "Mines clay in Varrock", name = "PenClay")
+public class PenClay extends ActiveScript implements PaintListener {
+
+private long startClock;
+private Tree container = null;
+private List<Node> jobs = new ArrayList<Node>();
+
+@Override
+public int loop() {
+  if(container != null){
+	final Node job = container.state();
+	if(job != null){
+		container.set(job);
+		getContainer().submit(job);
+		job.join();
+	}
+} else {
+	jobs.add(new Mining());
+	jobs.add(new Banking());
+	jobs.add(new BankWalking());
+	jobs.add(new MineWalking());
+	
+	container = new Tree(jobs.toArray(new Node[jobs.size()]));
+}
+
+return Random.nextInt(150, 250);
+}
+
+	private Image getImage(String url) {
+    try {
+        return ImageIO.read(new URL(url));
+    } catch(IOException e) {
+        return null;
+    }
+}
+
+	private final Image img1 = getImage("http://i.imgur.com/aAtMqab.png");
+
+
+@Override
+public void onRepaint(Graphics g1) {
+	Graphics2D g = (Graphics2D) g1;
+    
+    long millis = System.currentTimeMillis() - startClock;
+    long seconds = millis / 1000;
+    long hours = millis / (1000 * 60 * 60);
+    long minutes = millis / (1000 * 60);
+    millis -= hours * (1000 * 60 * 60);
+    millis -= minutes * (1000 * 60);
+    g.drawImage(img1, 1, 389, null);
+    g.drawString(+ hours + ":" + minutes + ":" + seconds, 125, 418);
+}
+		public void onStart() {
+			startClock = System.currentTimeMillis();
+		}
+	}

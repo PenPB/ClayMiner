@@ -9,7 +9,7 @@ import org.powerbot.game.api.methods.widget.Bank;
 import Resources.Variables;
 
 public class Banking extends Node{
-  
+	
 	public boolean atBank(){
 		return (Variables.BANK).contains(Players.getLocal().getLocation());
 	}
@@ -23,10 +23,10 @@ public class Banking extends Node{
 	public void execute() {
 		if(!Bank.isOpen()){
 			Bank.open();
-			Bank.depositInventory();
+			Bank.deposit(434, 27); 
 		}
 		else{
-			Bank.depositInventory();
+			Bank.deposit(434, 27); 
 		}
 		Bank.close();
 	}

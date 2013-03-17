@@ -13,6 +13,7 @@ import org.powerbot.core.script.ActiveScript;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.core.script.job.state.Tree;
 import org.powerbot.game.api.Manifest;
+import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.util.Random;
 
 import Nodes.BankWalking;
@@ -63,6 +64,11 @@ return Random.nextInt(150, 250);
 @Override
 public void onRepaint(Graphics g1) {
 	Graphics2D g = (Graphics2D) g1;
+	int x = Mouse.getX();
+	int y = Mouse.getY();
+	
+	g.drawLine(x, y - 10, x, y + 10);
+	g.drawLine(x - 10, y, x + 10, y);
     
     long millis = System.currentTimeMillis() - startClock;
     long seconds = millis / 1000;

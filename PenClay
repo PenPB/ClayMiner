@@ -15,6 +15,7 @@ import org.powerbot.core.script.job.state.Tree;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.util.Random;
+import org.powerbot.game.api.util.Time;
 
 import Nodes.BankWalking;
 import Nodes.Banking;
@@ -77,7 +78,7 @@ public void onRepaint(Graphics g1) {
     millis -= hours * (1000 * 60 * 60);
     millis -= minutes * (1000 * 60);
     g.drawImage(img1, 1, 389, null);
-    g.drawString(+ hours + ":" + minutes + ":" + seconds, 125, 418);
+    g.drawString(Time.format(System.currentTimeMillis() - startClock), 125, 418);
 }
 		public void onStart() {
 			startClock = System.currentTimeMillis();

@@ -1,5 +1,6 @@
 package Nodes;
 
+import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.Players;
@@ -23,10 +24,22 @@ public class Banking extends Node{
 	public void execute() {
 		if(!Bank.isOpen()){
 			Bank.open();
-			Bank.deposit(434, 27); 
-		}
-		else{
-			Bank.deposit(434, 27); 
+			Bank.deposit(434, 27);
+            Task.sleep(100, 300);
+            Bank.deposit(438, 27);
+            Task.sleep(100, 300);
+            Bank.deposit(1621, 27);
+            Task.sleep(100, 300);
+            Bank.deposit(1623, 27);
+            
+            }else{
+            	Bank.deposit(434, 27);
+                Task.sleep(100, 300);
+                Bank.deposit(438, 27);
+                Task.sleep(100, 300);
+                Bank.deposit(1621, 27);
+                Task.sleep(100, 300);
+                Bank.deposit(1623, 27);
 		}
 		Bank.close();
 	}

@@ -31,6 +31,8 @@ public class Banking extends Node{
             Bank.deposit(1621, 27);
             Task.sleep(100, 300);
             Bank.deposit(1623, 27);
+	    Task.sleep(100, 300);
+            Bank.deposit(1617, 27);
             
             }else{
             	Bank.deposit(434, 27);
@@ -40,6 +42,8 @@ public class Banking extends Node{
                 Bank.deposit(1621, 27);
                 Task.sleep(100, 300);
                 Bank.deposit(1623, 27);
+		Task.sleep(100, 300);
+           	Bank.deposit(1617, 27);
 		}
 		Bank.close();
 	}
